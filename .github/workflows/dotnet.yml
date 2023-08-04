@@ -1,28 +1,49 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+trigger:
+  branches:
+    include:
+      - main  # Adjust this to the branch you want to trigger the pipeline on
 
-name: .NET
+pool:
+  vmImage: 'windows-latest'  # You can change the agent image to Linux or macOS if needed
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+variables:
+  buildConfiguration: 'Release'
 
-jobs:
-  build:
+steps:
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGet'  # Optional: Give a meaningful display name to the step
 
-    runs-on: ubuntu-latest
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+- task: VSBuild@1
+  displayName: 'Build Solution'
+  inputs:
+    solution: '**/*.sln'
+    vsVersion: '16.0'  # Optional: Adjust to your Visual Studio version
+    platform: 'Any CPU'
+    configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: 'Pack NuGet Package'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+    buildProperties: 'Configuration=$(buildConfiguration)'
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'  # Optional: Give a meaningful display name to the step
+
+- task: NuGetCommand@2
+  displayName: 'Push NuGet Package to Azure Artifacts'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'external'
+    nuGetFeedPublish: 'hardipsinhmatroja1520'
+    nuGetFeedEndpoint: 'https://pkgs.dev.azure.com/hardipsinhmatroja1520/_packaging/hardipsinhmatroja1520/nuget/v3/index.json'
+

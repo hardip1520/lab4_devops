@@ -33,20 +33,23 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: NuGetCommand@2
-  displayName: 'Create NuGet Package'
+- task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/$(nugetProjectName).csproj'
-    packDestination: '$(Build.ArtifactStagingDirectory)'
+    packagesToPack: 'StringLibrary/StringLibrary.csproj'
+    packDirectory: '$(build.artifactStagingDirectory)/nuget'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
-    
+
+    - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(build.artifactStagingDirectory)/nuget'
+    ArtifactName: 'nuget'
+
+
+- task: NuGetAuthenticate@0
+  inputs:
+   forceReinstallCredentialProvider: true
 - task: NuGetCommand@2
   inputs:
     command: 'push'

@@ -50,11 +50,3 @@ steps:
 - task: NuGetAuthenticate@0
   inputs:
     forceReinstallCredentialProvider: true
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(build.artifactStagingDirectory)/nuget/*.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'bcb84f5d-0bd2-4faf-bf61-b1b2d10d42aa/43b78eca-3e06-4fe5-b320-54bd5ff87672'
-    allowPackageConflicts: false

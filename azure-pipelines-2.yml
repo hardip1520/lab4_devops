@@ -58,5 +58,5 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish build artifacts'
   inputs:
-    artifactName: 'Lab3devops'
+    artifactName: 'Lab4'
     targetPath: '$(Build.ArtifactStagingDirectory)'

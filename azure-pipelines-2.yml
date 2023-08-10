@@ -40,8 +40,7 @@ steps:
     packDirectory: '$(build.artifactStagingDirectory)/Lab4'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
-
-    - task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(build.artifactStagingDirectory)/Lab4'
     ArtifactName: 'Lab4'

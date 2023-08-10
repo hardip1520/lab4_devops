@@ -35,10 +35,4 @@ steps:
     artifactName: 'Lab4devops'
     targetPath: '$(Build.ArtifactStagingDirectory)'
 
-    inputs:
-      command: 'push'
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-      publishVstsFeed: 'Lab4devops'
-      allowPackageConflicts: true
-    displayName: 'Publish NuGet Package'
+   

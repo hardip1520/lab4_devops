@@ -53,3 +53,25 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'bcb84f5d-0bd2-4faf-bf61-b1b2d10d42aa/43b78eca-3e06-4fe5-b320-54bd5ff87672'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build web app'
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish web app'
+  inputs:
+    command: publish
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish build artifacts'
+  inputs:
+    artifactName: 'Lab3devops'
+    targetPath: '$(Build.ArtifactStagingDirectory)'

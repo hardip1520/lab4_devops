@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HARDIPSINH J MATROJA\\Desktop\\Semester2\\Devops\\ClassLibraryProjects\\StringLibrary\\StringLibrary.csproj": {}
+    "C:\\Users\\HARDIPSINH J MATROJA\\Documents\\GitHub\\lab4_devops\\StringLibrary\\StringLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HARDIPSINH J MATROJA\\Desktop\\Semester2\\Devops\\ClassLibraryProjects\\StringLibrary\\StringLibrary.csproj": {
+    "C:\\Users\\HARDIPSINH J MATROJA\\Documents\\GitHub\\lab4_devops\\StringLibrary\\StringLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HARDIPSINH J MATROJA\\Desktop\\Semester2\\Devops\\ClassLibraryProjects\\StringLibrary\\StringLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\HARDIPSINH J MATROJA\\Documents\\GitHub\\lab4_devops\\StringLibrary\\StringLibrary.csproj",
         "projectName": "StringLibrary",
-        "projectPath": "C:\\Users\\HARDIPSINH J MATROJA\\Desktop\\Semester2\\Devops\\ClassLibraryProjects\\StringLibrary\\StringLibrary.csproj",
+        "projectPath": "C:\\Users\\HARDIPSINH J MATROJA\\Documents\\GitHub\\lab4_devops\\StringLibrary\\StringLibrary.csproj",
         "packagesPath": "C:\\Users\\HARDIPSINH J MATROJA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HARDIPSINH J MATROJA\\Desktop\\Semester2\\Devops\\ClassLibraryProjects\\StringLibrary\\obj\\",
+        "outputPath": "C:\\Users\\HARDIPSINH J MATROJA\\Documents\\GitHub\\lab4_devops\\StringLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

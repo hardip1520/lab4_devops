@@ -37,14 +37,9 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'StringLibrary/StringLibrary.csproj'
-    packDirectory: '$(build.artifactStagingDirectory)/nuget'
+    packDirectory: '$(build.artifactStagingDirectory)/Lab4'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
-
-    - task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(build.artifactStagingDirectory)/nuget'
-    ArtifactName: 'nuget'
 
 
 - task: NuGetAuthenticate@0

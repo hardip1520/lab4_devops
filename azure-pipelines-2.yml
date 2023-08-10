@@ -39,7 +39,6 @@ steps:
     configuration: '$(buildConfiguration)'
 
   - task: NuGetCommand@2
-  displayName: 'Create Nuget pakage '
     inputs:
     command: 'pack'
     packagesToPack: '**/$(nugetProjectName).csproj'

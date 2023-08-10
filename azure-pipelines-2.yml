@@ -37,13 +37,13 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'StringLibrary/StringLibrary.csproj'
-    packDirectory: '$(build.artifactStagingDirectory)/Lab4'
+    packDirectory: '$(build.artifactStagingDirectory)/nuget'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(build.artifactStagingDirectory)/Lab4'
-    ArtifactName: 'Lab4'
+    PathtoPublish: '$(build.artifactStagingDirectory)/nuget'
+    ArtifactName: 'nuget'
 
 - task: NuGetAuthenticate@0
   inputs:
@@ -52,7 +52,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(build.artifactStagingDirectory)/Lab4/*.nupkg'
+    packagesToPush: '$(build.artifactStagingDirectory)/nuget/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: 'bcb84f5d-0bd2-4faf-bf61-b1b2d10d42aa/43b78eca-3e06-4fe5-b320-54bd5ff87672'
     allowPackageConflicts: false

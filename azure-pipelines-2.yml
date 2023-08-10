@@ -50,3 +50,12 @@ steps:
 - task: NuGetAuthenticate@0
   inputs:
     forceReinstallCredentialProvider: true
+
+- task: NuGetCommand@2
+  inputs:
+      command: 'push'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
+      publishVstsFeed: 'Lab4'
+      allowPackageConflicts: true
+  displayName: 'Push NuGet Package'

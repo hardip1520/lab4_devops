@@ -38,10 +38,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-  - task: NuGetCommand@2
-    inputs:
+- task: NuGetCommand@2
+  inputs:
     command: 'pack'
-    packagesToPack: '**/$(nugetProjectName).csproj'
-    packDestination: '$(Build.ArtifactStagingDirectory)'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'nugetVersion'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
